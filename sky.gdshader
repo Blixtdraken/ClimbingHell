@@ -75,4 +75,3 @@ void sky() {
 	//COLOR = texture(tint_ramp, SKY_COORDS.yx).rgb;
 
 }
-

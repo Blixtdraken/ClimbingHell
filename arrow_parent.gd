@@ -5,7 +5,7 @@ extends Node3D
 @export 
 var cross_bow:CrossBow
 @onready
-var child = get_node("Child")
+var child:Node3D = get_node("Child")
 @export
 var arrow_scene:PackedScene
 
@@ -24,13 +24,13 @@ func _process(delta: float) -> void:
 	
 	pass
 
-func _cross_reload():
+func _cross_reload() -> void:
 	print("Reloading Arrow")
 	if !current_arrow:
 		current_arrow = arrow_scene.instantiate()
 		child.add_child(current_arrow)
 	pass
-func _cross_shot():
+func _cross_shot() -> void:
 	if current_arrow:
 		current_arrow.start_arrowing(Globals.main.get_node("Arrows"))
 		current_arrow = null

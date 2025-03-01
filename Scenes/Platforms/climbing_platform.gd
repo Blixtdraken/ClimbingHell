@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 	pass
 	
 
-func _on_climb_grab():
+func _on_climb_grab() -> void:
 	if Globals.score < platform_count:
 		Globals.score = platform_count
 	
-	var current_platform = self
+	var current_platform:ClimbingPlatform = self
 	for i in range(5):
 		current_platform = current_platform.get_or_generate_next_platform()
 	pass
@@ -31,7 +31,7 @@ func _on_climb_grab():
 
 func get_or_generate_next_platform() -> ClimbingPlatform:
 	if !next_platform:
-		var spawn_offset = rand_range_vector3(spawn_platform_setttings.spawn_ranges.offset_min, spawn_platform_setttings.spawn_ranges.offset_max)
+		var spawn_offset:Vector3 = rand_range_vector3(spawn_platform_setttings.spawn_ranges.offset_min, spawn_platform_setttings.spawn_ranges.offset_max)
 		var packed_scene:PackedScene = preload("res://Scenes/Platforms/real-platform.tscn")
 		var platform:ClimbingPlatform = packed_scene.instantiate()
 		next_platform = platform
@@ -44,8 +44,8 @@ func get_or_generate_next_platform() -> ClimbingPlatform:
 
 func rand_range_vector3(min:Vector3, max:Vector3)->Vector3:
 	
-	var x = randf_range(min.x, max.x)
-	var y = randf_range(min.y, max.y)
-	var z = randf_range(min.z, max.z)
+	var x:float = randf_range(min.x, max.x)
+	var y:float = randf_range(min.y, max.y)
+	var z:float = randf_range(min.z, max.z)
 	return Vector3(x,y,z)
 	

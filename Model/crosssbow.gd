@@ -44,7 +44,7 @@ func get_string_pos()->Transform3D:
 	
 
 
-func _animation_finished(anim_name:StringName):
+func _animation_finished(anim_name:StringName) -> void:
 	if anim_name == "Load":
 		reloaded.emit()
 		loaded = true

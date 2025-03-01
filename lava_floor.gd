@@ -15,7 +15,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_body_enter_lava(body:Node3D):
+func _on_body_enter_lava(body:Node3D) -> void:
 	if Engine.is_editor_hint():
 		return
 	print("Lavafied")

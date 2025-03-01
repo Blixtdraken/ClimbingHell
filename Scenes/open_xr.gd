@@ -8,10 +8,10 @@ signal pose_recentered
 @export var maximum_refresh_rate : int = 90
 
 var xr_interface : OpenXRInterface
-var xr_is_focussed = false
+var xr_is_focussed:bool = false
 
 # Called when the node enters the scene tree for the first time.
-func setup():
+func setup() -> void:
 	
 	xr_interface = XRServer.find_interface("OpenXR")
 	if xr_interface and xr_interface.is_initialized():
@@ -43,15 +43,15 @@ func setup():
 		
 func _on_openxr_session_begun() -> void:
 	# Get the reported refresh rate
-	var current_refresh_rate = xr_interface.get_display_refresh_rate()
+	var current_refresh_rate:int = xr_interface.get_display_refresh_rate()
 	if current_refresh_rate > 0:
 		print("OpenXR: Refresh rate reported as ", str(current_refresh_rate))
 	else:
 		print("OpenXR: No refresh rate given by XR runtime")
 
 	# See if we have a better refresh rate available
-	var new_rate = current_refresh_rate
-	var available_rates : Array = xr_interface.get_available_display_refresh_rates()
+	var new_rate:int = current_refresh_rate
+	var available_rates : Array[int] = xr_interface.get_available_display_refresh_rates()
 	if available_rates.size() == 0:
 		print("OpenXR: Target does not support refresh rate extension")
 	elif available_rates.size() == 1:

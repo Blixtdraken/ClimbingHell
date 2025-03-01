@@ -1,11 +1,11 @@
 extends CharacterBody3D
 class_name Player
 @export
-var speed = 5.0
+var speed:float = 5.0
 @export
-var jump_velocity = 4.5
+var jump_velocity:float = 4.5
 @export
-var turn_speed = 5.0
+var turn_speed:float = 5.0
 @onready
 var hmd: XRCamera3D = get_node("XROrigin/HMD")
 @onready

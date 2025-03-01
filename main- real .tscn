@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cgk5utt07v5a7"]
+[gd_scene load_steps=76 format=3 uid="uid://cgk5utt07v5a7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0uvn2"]
 [ext_resource type="Shader" path="res://sky.gdshader" id="2_3lbil"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://lava_floor.gd" id="16_gxjdn"]
 [ext_resource type="PackedScene" uid="uid://bg0e16d578la3" path="res://Scenes/Lava/lava_tile.tscn" id="16_wd65p"]
 [ext_resource type="PackedScene" uid="uid://bhmutxrli1suc" path="res://Model/platform.glb" id="17_a3swb"]
-[ext_resource type="Script" path="res://debug_thing.gd" id="18_45q1k"]
 [ext_resource type="PackedScene" uid="uid://fv5so0p2c4fr" path="res://Scenes/Platforms/real-platform.tscn" id="18_54rcf"]
 
 [sub_resource type="Gradient" id="Gradient_hvd2b"]
@@ -587,9 +586,6 @@ playback_auto_capture = false
 
 [node name="Platform" parent="." instance=ExtResource("18_54rcf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00029852, 0.989791, -0.0830285)
-
-[node name="Node3D" type="Node3D" parent="."]
-script = ExtResource("18_45q1k")
 
 [connection signal="input_vector2_changed" from="Player/XROrigin/Left" to="Player" method="_left_controller_vector2"]
 [connection signal="button_pressed" from="Player/XROrigin/Right" to="Player" method="_on_right_button_pressed"]

@@ -1,9 +1,9 @@
 extends Node
 
-var webxr_interface
-var vr_supported = false
+var webxr_interface:WebXRInterface
+var vr_supported:bool = false
 
-func setup():
+func setup() -> void:
 	# We assume this node has a button as a child.
 	# This button is for the user to consent to entering immersive VR mode.
 	%Button.pressed.connect(self._on_button_pressed)
@@ -22,11 +22,11 @@ func setup():
 		# be called sometime later to let us know if it's supported or not.
 		webxr_interface.is_session_supported("immersive-vr")
 
-func _webxr_session_supported(session_mode, supported):
+func _webxr_session_supported(session_mode, supported) -> void:
 	if session_mode == 'immersive-vr':
 		vr_supported = supported
 
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	if not vr_supported:
 		OS.alert("Your browser doesn't support VR")
 		return

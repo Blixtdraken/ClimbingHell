@@ -33,12 +33,12 @@ func _process(delta: float) -> void:
 enum ClawState {OPEN,
 CLOSED}
 
-func set_transform_from_node3d(node:Node3D):
+func set_transform_from_node3d(node:Node3D) -> void:
 	global_position = node.global_position
 	global_rotation_degrees = node.global_rotation_degrees
 	pass
 
-func set_open_float(value:float):
+func set_open_float(value:float) -> void:
 	if animator:
 		animator.seek(animator.current_animation_length*value, true, true)
 	

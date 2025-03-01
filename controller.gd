@@ -4,7 +4,7 @@ extends XRController3D
 var grabber_area: Area3D = get_node("GrabberArea")
 @onready
 var claw_model: Claw = get_node("Claw")
-var climb_pivot = null
+var climb_pivot:Variant = null
 @onready
 var player: Player = get_parent().get_parent()
 

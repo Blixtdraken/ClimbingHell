@@ -39,7 +39,9 @@ void vertex(){
 	vec2 delta_vertex = orig_vertex - VERTEX.xz;
 	vec2 wave_uv_offset = NODE_POSITION_WORLD.xz + VERTEX.xz;
 	VERTEX.y += texture(wave_noise,  wave_uv_scale*vec2(wave_speed*TIME+wave_uv_offset)).r*waves_height;
-
+	
+	VERTEX.xz += texture(wave_noise,  wave_uv_scale*vec2(wave_speed*TIME+wave_uv_offset)).r*waves_distort;
+	
 	UV += NODE_POSITION_WORLD.xz/scale - delta_vertex/scale;
 }
 vec3 srgb_to_linear(vec3 c) {

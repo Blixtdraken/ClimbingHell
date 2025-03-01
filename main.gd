@@ -10,10 +10,10 @@ signal pose_recentered
 @export var maximum_refresh_rate : int = 90
 
 var xr_interface : OpenXRInterface
-var xr_is_focussed = false
+var xr_is_focussed:bool = false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	
 	if Globals.score > Globals.high_score:
 		Globals.high_score = Globals.score

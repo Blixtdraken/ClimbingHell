@@ -1,0 +1,81 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Pico"
+run/main_scene="res://main- real .tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://Texture/icon.svg"
+
+[autoload]
+
+XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
+XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
+Globals="*res://globals.gd"
+XRSetupHandler="*res://Scenes/xr_setup_handler.tscn"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unassigned_variable_op_assign=0
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+
+[display]
+
+window/vsync/vsync_mode=2
+
+[file_customization]
+
+folder_colors={
+"res://Model/": "pink",
+"res://Scenes/": "yellow",
+"res://Scenes/Lava/": "red",
+"res://Scenes/Platforms/": "blue",
+"res://Texture/": "green",
+"res://addons/": "gray"
+}
+
+[physics]
+
+common/physics_ticks_per_second=90
+3d/physics_engine="JoltPhysics3D"
+jolt_3d/collisions/areas_detect_static_bodies=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+
+[shader_globals]
+
+wind_intensity={
+"type": "float",
+"value": 1.0
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(1, 0, 0)
+}
+player_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+
+[xr]
+
+openxr/enabled=true
+openxr/foveation_level=1
+openxr/extensions/hand_tracking=false
+shaders/enabled=true

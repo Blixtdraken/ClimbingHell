@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk4kt5sxkukm1"]
+
+[ext_resource type="PackedScene" uid="uid://bgqeswdoo46xq" path="res://Model/arrow.glb" id="1_76qgf"]
+[ext_resource type="Script" path="res://Model/arrow.gd" id="1_qb0ur"]
+[ext_resource type="Script" path="res://Model/arrow_model.gd" id="3_5shhl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5aq5"]
+albedo_color = Color(0.483875, 0.640793, 0.595572, 1)
+metallic = 1.0
+roughness = 0.13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m71rg"]
+albedo_color = Color(0.715745, 0.358442, 0.213669, 1)
+
+[sub_resource type="Gradient" id="Gradient_vtxqt"]
+offsets = PackedFloat32Array(0, 0.293878, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.494744, 0.583448, 0.715038, 1, 0, 0.552737, 0.619899, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_blvb2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k7sat"]
+width = 62
+height = 1317
+color_ramp = SubResource("Gradient_vtxqt")
+noise = SubResource("FastNoiseLite_blvb2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a66e"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = SubResource("NoiseTexture2D_k7sat")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qao5b"]
+radius = 0.754008
+
+[node name="Arrow" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+mass = 0.01
+lock_rotation = true
+freeze = true
+script = ExtResource("1_qb0ur")
+
+[node name="arrow" parent="." instance=ExtResource("1_76qgf")]
+script = ExtResource("3_5shhl")
+
+[node name="ArrowHead" parent="arrow" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o5aq5")
+
+[node name="Stick" parent="arrow" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_m71rg")
+
+[node name="Feathers" parent="arrow" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0a66e")
+
+[node name="HitCaster" type="RayCast3D" parent="arrow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.2987)
+target_position = Vector3(0, 0, -14.815)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qao5b")
+
+[editable path="arrow"]

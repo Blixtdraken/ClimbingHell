@@ -1,0 +1,107 @@
+[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://dfcckvxs13rcq"]
+
+[ext_resource type="Shader" path="res://water.gdshader" id="1_f3dd7"]
+
+[sub_resource type="Gradient" id="Gradient_injyk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.775934)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oiek2"]
+noise_type = 2
+frequency = 0.0151
+fractal_octaves = 2
+fractal_lacunarity = 1.669
+fractal_gain = 1.557
+fractal_weighted_strength = 0.33
+domain_warp_enabled = true
+domain_warp_amplitude = 60.894
+domain_warp_frequency = 0.015
+domain_warp_fractal_octaves = 3
+domain_warp_fractal_lacunarity = 3.631
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_it3bd"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_injyk")
+noise = SubResource("FastNoiseLite_oiek2")
+
+[sub_resource type="Gradient" id="Gradient_4632b"]
+offsets = PackedFloat32Array(0.145631, 0.282158, 0.443983, 0.694175, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0921053, 0.0921053, 0.0921053, 1, 0.601223, 0.601223, 0.601223, 1, 0.737192, 0.737194, 0.737192, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vyfhp"]
+noise_type = 2
+frequency = 0.0151
+fractal_octaves = 2
+fractal_lacunarity = 1.669
+fractal_gain = 1.557
+fractal_weighted_strength = 0.33
+domain_warp_enabled = true
+domain_warp_amplitude = 60.894
+domain_warp_frequency = 0.015
+domain_warp_fractal_octaves = 3
+domain_warp_fractal_lacunarity = 3.631
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3geh8"]
+invert = true
+in_3d_space = true
+seamless = true
+as_normal_map = true
+bump_strength = 4.3
+color_ramp = SubResource("Gradient_4632b")
+noise = SubResource("FastNoiseLite_vyfhp")
+
+[sub_resource type="Gradient" id="Gradient_2podf"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.240506, 0.567511, 0.656118, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.384003, 1.60035e-06, 0.0141272, 1, 0.631274, 0.366317, 9.62615e-08, 1, 1, 0.788235, 0.0313726, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xi6yd"]
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_2podf")
+noise = SubResource("FastNoiseLite_oiek2")
+
+[sub_resource type="Gradient" id="Gradient_2r0jl"]
+interpolation_mode = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fyrml"]
+noise_type = 3
+seed = 3
+frequency = 0.0469
+fractal_gain = 0.0
+domain_warp_amplitude = 6.356
+domain_warp_frequency = -0.128
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_lacunarity = 0.0
+domain_warp_fractal_gain = 0.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uuypx"]
+width = 128
+height = 128
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_2r0jl")
+noise = SubResource("FastNoiseLite_fyrml")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f3dd7")
+shader_parameter/scroll_direction = Vector2(0.35, 0.35)
+shader_parameter/scroll_speed = 0.001
+shader_parameter/uv_scale = Vector2(10, 10)
+shader_parameter/waves_height = 0.6
+shader_parameter/waves_distort = 0.0
+shader_parameter/wave_uv_scale = 0.036
+shader_parameter/wave_speed = 0.423
+shader_parameter/distance_fade_min = 50.0
+shader_parameter/distance_fade_max = 15.0
+shader_parameter/scale = 120.0
+shader_parameter/emm_multiplier = 1.2
+shader_parameter/snap_multi = 0.5
+shader_parameter/fog_color = Color(0.917647, 0, 0.0470588, 1)
+shader_parameter/lava_texture = SubResource("NoiseTexture2D_xi6yd")
+shader_parameter/lava_normal = SubResource("NoiseTexture2D_3geh8")
+shader_parameter/lava_mask = SubResource("NoiseTexture2D_it3bd")
+shader_parameter/wave_noise = SubResource("NoiseTexture2D_uuypx")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SpawnRange" load_steps=2 format=3 uid="uid://cg48j6mb4333g"]
+
+[ext_resource type="Script" path="res://Scenes/Platforms/spawn_range.gd" id="1_ux65d"]
+
+[resource]
+script = ExtResource("1_ux65d")
+offset_min = Vector3(-3, 1.5, -3)
+offset_max = Vector3(3, 3, 3)

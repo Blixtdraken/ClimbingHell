@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://btcg5xgbv7isg"]
+
+[ext_resource type="Shader" path="res://water-toon.gdshader" id="1_xneq3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m3xnp"]
+noise_type = 0
+frequency = 0.0503
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kfxoy"]
+noise = SubResource("FastNoiseLite_m3xnp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s5c4s"]
+frequency = 0.0062
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fg24p"]
+noise = SubResource("FastNoiseLite_s5c4s")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xneq3")
+shader_parameter/time_speed = 0.056
+shader_parameter/surface_speed = 1.0
+shader_parameter/spin = 0.0
+shader_parameter/brightness = 2.3
+shader_parameter/color_intensity = 4.89
+shader_parameter/horizontal_frequency = 2.0
+shader_parameter/vertical_frequency = 2.0
+shader_parameter/size = 2.815
+shader_parameter/banding_bias = 0.6
+shader_parameter/wave_height = 0.385
+shader_parameter/texture_height = -0.11
+shader_parameter/color1 = Color(0.95, 0.395833, 0, 1)
+shader_parameter/color2 = Color(0.96, 0.608, 0, 1)
+shader_parameter/color3 = Color(1, 0.966667, 0, 1)
+shader_parameter/color4 = Color(1, 1, 0.71, 1)
+shader_parameter/wave_texture = SubResource("NoiseTexture2D_fg24p")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_kfxoy")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg0e16d578la3"]
+
+[ext_resource type="PlaneMesh" uid="uid://nwia11c77kwk" path="res://Scenes/Lava/lava_tile_mesh.tres" id="2_t52kk"]
+
+[node name="LavaTile" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 6.98492e-10, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_t52kk")
+skeleton = NodePath("../..")

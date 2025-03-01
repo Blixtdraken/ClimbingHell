@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bljb84o3exqmq"]
+
+[ext_resource type="Script" path="res://Scenes/xr_setup_handler.gd" id="1_rea35"]
+[ext_resource type="Script" path="res://Scenes/open_xr.gd" id="2_xc68c"]
+[ext_resource type="Script" path="res://Scenes/web_xr.gd" id="3_3awu8"]
+
+[node name="XRSetupHandler" type="Node"]
+script = ExtResource("1_rea35")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -42.5
+offset_right = 126.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "start"
+
+[node name="OpenXR" type="Node" parent="."]
+script = ExtResource("2_xc68c")
+
+[node name="WebXR" type="Node" parent="."]
+script = ExtResource("3_3awu8")

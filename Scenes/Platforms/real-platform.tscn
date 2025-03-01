@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://fv5so0p2c4fr"]
+
+[ext_resource type="Script" path="res://Scenes/Platforms/climbing_platform.gd" id="1_sgarq"]
+[ext_resource type="Resource" uid="uid://ujlun1gwq448" path="res://Scenes/Platforms/platform_settings.tres" id="2_6xfem"]
+[ext_resource type="Material" uid="uid://dc7vpurh6pdi5" path="res://Scenes/Platforms/real-platform.tres" id="3_e0t8x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jsyx"]
+size = Vector3(0.5, 1.2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mh2mg"]
+size = Vector3(0.5, 1.2, 0.5)
+subdivide_width = 10
+subdivide_height = 10
+subdivide_depth = 10
+
+[node name="Platform" type="StaticBody3D"]
+script = ExtResource("1_sgarq")
+spawn_platform_setttings = ExtResource("2_6xfem")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6jsyx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_e0t8x")
+mesh = SubResource("BoxMesh_mh2mg")

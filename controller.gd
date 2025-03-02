@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		if not climb_pivot:
 			
 			for body in grabber_area.get_overlapping_bodies():
-					if body is ClimbingPlatform:
+					if body is ClimbingPlatform or body.has_meta("climbable"):
 						body = body as ClimbingPlatform
 						climb_pivot = global_position
 						claw_model.paused = true

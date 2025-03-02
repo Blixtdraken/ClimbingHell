@@ -4,7 +4,8 @@
 
 [sub_resource type="Gradient" id="Gradient_injyk"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.775934)
+offsets = PackedFloat32Array(0.240664, 0.804979)
+colors = PackedColorArray(0, 0, 0, 1, 0.804743, 0.804743, 0.804743, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_oiek2"]
 noise_type = 2
@@ -26,7 +27,7 @@ color_ramp = SubResource("Gradient_injyk")
 noise = SubResource("FastNoiseLite_oiek2")
 
 [sub_resource type="Gradient" id="Gradient_4632b"]
-offsets = PackedFloat32Array(0.145631, 0.282158, 0.443983, 0.694175, 1)
+offsets = PackedFloat32Array(0.145228, 0.394191, 0.6639, 0.694175, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.0921053, 0.0921053, 0.0921053, 1, 0.601223, 0.601223, 0.601223, 1, 0.737192, 0.737194, 0.737192, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vyfhp"]
@@ -91,8 +92,8 @@ shader = ExtResource("1_f3dd7")
 shader_parameter/scroll_direction = Vector2(0.35, 0.35)
 shader_parameter/scroll_speed = 0.001
 shader_parameter/uv_scale = Vector2(10, 10)
-shader_parameter/waves_height = 0.6
-shader_parameter/waves_distort = 0.1
+shader_parameter/waves_height = 0.5
+shader_parameter/waves_distort = 0.25
 shader_parameter/wave_uv_scale = 0.036
 shader_parameter/wave_speed = 0.423
 shader_parameter/distance_fade_min = 50.0
@@ -100,7 +101,7 @@ shader_parameter/distance_fade_max = 15.0
 shader_parameter/scale = 120.0
 shader_parameter/emm_multiplier = 1.2
 shader_parameter/snap_multi = 0.5
-shader_parameter/fog_color = Color(0.917647, 0, 0.0470588, 1)
+shader_parameter/fog_color = Color(0.913725, 0, 0.0470588, 1)
 shader_parameter/lava_texture = SubResource("NoiseTexture2D_xi6yd")
 shader_parameter/lava_normal = SubResource("NoiseTexture2D_3geh8")
 shader_parameter/lava_mask = SubResource("NoiseTexture2D_it3bd")

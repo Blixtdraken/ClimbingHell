@@ -33,7 +33,7 @@ noise = SubResource("FastNoiseLite_h6e8j")
 
 [sub_resource type="Gradient" id="Gradient_d44ym"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.452632, 0.515789)
+offsets = PackedFloat32Array(0.40724, 0.502262)
 colors = PackedColorArray(0.737255, 0, 0.0784314, 0.443137, 0.917647, 0, 0.0666667, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5iyiv"]
@@ -230,19 +230,22 @@ noise = SubResource("FastNoiseLite_chfw5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvqu5"]
 albedo_texture = SubResource("NoiseTexture2D_3wdvb")
-metallic_specular = 0.0
+metallic = 0.08
+metallic_specular = 0.13
 heightmap_scale = 6.222
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8np0"]
 albedo_color = Color(0.777088, 0.914044, 1, 1)
-metallic = 0.82
-roughness = 0.12
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcrjc"]
 cull_mode = 1
 albedo_color = Color(0.084, 0.84, 0, 1)
-metallic = 0.07
-roughness = 0.52
+metallic = 0.5
+roughness = 0.66
+normal_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_sav6h"]
 offsets = PackedFloat32Array(0.191489, 0.462766, 0.925532)
@@ -366,18 +369,18 @@ script = ExtResource("1_0uvn2")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3q0es")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="Sky" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.72479, -0.682917, -0.091125, 0.124744, -7.31113e-08, 0.992189, -0.677583, -0.730496, 0.0851898, -4.99423, 1.13993, 0.451322)
-light_color = Color(1, 0.422396, 0.384838, 1)
-light_energy = 10.0
-light_angular_distance = 5.0
+light_color = Color(0.999997, 0.282196, 0.267274, 1)
+light_energy = 10.616
+light_angular_distance = 15.0
 sky_mode = 1
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="Lava" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.99423, 1.13993, 0.451322)
 light_color = Color(0.967541, 0.273091, 0, 1)
 light_energy = 12.0
-light_angular_distance = 10.0
+light_angular_distance = 25.0
 sky_mode = 1
 
 [node name="Player" type="CharacterBody3D" parent="."]
@@ -398,9 +401,9 @@ current = true
 script = ExtResource("4_ok8kd")
 
 [node name="HMD" type="XRCamera3D" parent="Player/XROrigin"]
-transform = Transform3D(1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0)
 keep_aspect = 0
 current = true
+fov = 100.0
 
 [node name="Left" type="XRController3D" parent="Player/XROrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419881, 0.0485107, 0.00150967)
@@ -527,6 +530,10 @@ shape = SubResource("CapsuleShape3D_cj25u")
 script = ExtResource("6_6e30x")
 metadata/climbable = true
 
+[node name="RayCast3D" type="RayCast3D" parent="Player/PlayerCollider"]
+target_position = Vector3(0, -0.9, 0)
+debug_shape_custom_color = Color(0, 0.8, 1, 0.133333)
+
 [node name="Arrows" type="Node3D" parent="."]
 
 [node name="Lava Floor" type="Node3D" parent="."]
@@ -554,9 +561,9 @@ surface_material_override/1 = SubResource("StandardMaterial3D_h8np0")
 surface_material_override/2 = SubResource("StandardMaterial3D_dcrjc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="platform/Cube" index="0"]
-transform = Transform3D(0.062, 0, 2.18279e-11, 0, 0.358, 0, -8.73115e-11, 0, 0.022, 0, -2.92162, 0)
+transform = Transform3D(0.062, -0.000344463, -2.10098e-06, 5.9658e-05, 0.358, 8.84556e-06, 5.89744e-06, -0.000143973, 0.022, 0, -2.92162, 0)
 material_override = SubResource("StandardMaterial3D_07w7c")
-amount = 200
+amount = 50
 lifetime = 0.44
 fixed_fps = 20
 trail_lifetime = 2.27

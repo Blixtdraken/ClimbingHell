@@ -31,6 +31,6 @@ func _physics_process(delta: float) -> void:
 		global_position.z = player_node.global_position.z
 	else:
 		player_node = Globals.player
-	
-	position.y += delta*0.5
+	if Globals.score >= 1:
+		position.y += delta*0.5
 	pass

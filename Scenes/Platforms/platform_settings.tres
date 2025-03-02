@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="PlatformSpawnSettings" load_steps=3 format=3 uid="uid://ujlun1gwq448"]
-
-[ext_resource type="Script" path="res://Scenes/Platforms/spawn_platform_settings.gd" id="1_6vh5o"]
-[ext_resource type="Resource" uid="uid://cg48j6mb4333g" path="res://Scenes/Platforms/platform_spawn_range.tres" id="2_lh2s0"]
-
-[resource]
-script = ExtResource("1_6vh5o")
-spawn_ranges = ExtResource("2_lh2s0")

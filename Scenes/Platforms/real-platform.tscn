@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://fv5so0p2c4fr"]
+[gd_scene load_steps=8 format=3 uid="uid://fv5so0p2c4fr"]
 
 [ext_resource type="Script" path="res://Scenes/Platforms/climbing_platform.gd" id="1_sgarq"]
-[ext_resource type="Resource" uid="uid://ujlun1gwq448" path="res://Scenes/Platforms/platform_settings.tres" id="2_6xfem"]
+[ext_resource type="Script" path="res://Scenes/Platforms/spawn_platform_settings.gd" id="2_8scxy"]
 [ext_resource type="Material" uid="uid://dc7vpurh6pdi5" path="res://Scenes/Platforms/real-platform.tres" id="3_e0t8x"]
+[ext_resource type="Resource" uid="uid://cg48j6mb4333g" path="res://Scenes/Platforms/platform_spawn_range.tres" id="3_o6dr3"]
+
+[sub_resource type="Resource" id="Resource_imiod"]
+script = ExtResource("2_8scxy")
+spawn_ranges = ExtResource("3_o6dr3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6jsyx"]
 size = Vector3(0.5, 1.2, 0.5)
@@ -15,7 +20,7 @@ subdivide_depth = 10
 
 [node name="Platform" type="StaticBody3D"]
 script = ExtResource("1_sgarq")
-spawn_platform_setttings = ExtResource("2_6xfem")
+spawn_platform_setttings = SubResource("Resource_imiod")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6jsyx")

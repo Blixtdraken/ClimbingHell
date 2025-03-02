@@ -19,8 +19,8 @@ colors = PackedColorArray(0, 0, 0, 0, 0.494744, 0.583448, 0.715038, 1, 0, 0.5527
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_blvb2"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k7sat"]
-width = 62
-height = 1317
+width = 8
+height = 64
 color_ramp = SubResource("Gradient_vtxqt")
 noise = SubResource("FastNoiseLite_blvb2")
 
@@ -30,6 +30,7 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = SubResource("NoiseTexture2D_k7sat")
+uv1_scale = Vector3(0.738, 4.263, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qao5b"]
 radius = 0.754008

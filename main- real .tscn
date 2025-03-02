@@ -542,6 +542,7 @@ script = ExtResource("16_gxjdn")
 lava_tile_scene = ExtResource("16_wd65p")
 
 [node name="FloorDeathCheck" type="Area3D" parent="Lava Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 17
 collision_mask = 17
 

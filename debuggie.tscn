@@ -1,19 +1,18 @@
-[gd_scene load_steps=68 format=3 uid="uid://cgk5utt07v5a7"]
+[gd_scene load_steps=67 format=3 uid="uid://cx0es1upp8n6"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_0uvn2"]
-[ext_resource type="Shader" path="res://sky.gdshader" id="2_3lbil"]
-[ext_resource type="Script" path="res://player_body.gd" id="3_sthxs"]
-[ext_resource type="Script" path="res://xr_origin.gd" id="4_ok8kd"]
-[ext_resource type="Script" path="res://controller.gd" id="5_mqedg"]
-[ext_resource type="Script" path="res://player_collider.gd" id="6_6e30x"]
-[ext_resource type="PackedScene" uid="uid://ctqr55lmhy4yi" path="res://Model/claw.glb" id="6_80kxf"]
-[ext_resource type="Script" path="res://score_label.gd" id="7_38gp5"]
-[ext_resource type="Script" path="res://claw.gd" id="7_lrj4f"]
-[ext_resource type="Script" path="res://debug_label.gd" id="8_m727j"]
-[ext_resource type="Script" path="res://lava_floor.gd" id="16_gxjdn"]
-[ext_resource type="PackedScene" uid="uid://bg0e16d578la3" path="res://Scenes/Lava/lava_tile.tscn" id="16_wd65p"]
-[ext_resource type="PackedScene" uid="uid://bhmutxrli1suc" path="res://Model/platform.glb" id="17_a3swb"]
-[ext_resource type="PackedScene" uid="uid://fv5so0p2c4fr" path="res://Scenes/Platforms/real-platform.tscn" id="18_54rcf"]
+[ext_resource type="Script" path="res://main.gd" id="1_4qen6"]
+[ext_resource type="Shader" path="res://sky.gdshader" id="2_qp1bt"]
+[ext_resource type="Script" path="res://xr_origin.gd" id="4_esqbb"]
+[ext_resource type="Script" path="res://controller.gd" id="5_jc2tl"]
+[ext_resource type="PackedScene" uid="uid://ctqr55lmhy4yi" path="res://Model/claw.glb" id="6_07x5n"]
+[ext_resource type="Script" path="res://claw.gd" id="7_edfct"]
+[ext_resource type="Script" path="res://score_label.gd" id="8_e3a06"]
+[ext_resource type="Script" path="res://debug_label.gd" id="9_kkqyn"]
+[ext_resource type="Script" path="res://player_collider.gd" id="10_ce85j"]
+[ext_resource type="Script" path="res://lava_floor.gd" id="11_87hpk"]
+[ext_resource type="PackedScene" uid="uid://bg0e16d578la3" path="res://Scenes/Lava/lava_tile.tscn" id="12_svst8"]
+[ext_resource type="PackedScene" uid="uid://bhmutxrli1suc" path="res://Model/platform.glb" id="13_y4u08"]
+[ext_resource type="PackedScene" uid="uid://fv5so0p2c4fr" path="res://Scenes/Platforms/real-platform.tscn" id="14_elq8r"]
 
 [sub_resource type="Gradient" id="Gradient_hvd2b"]
 offsets = PackedFloat32Array(0.105263, 0.547368, 0.663158, 1)
@@ -36,7 +35,7 @@ colors = PackedColorArray(0.737255, 0, 0.0784314, 0.443137, 0.917647, 0, 0.06666
 gradient = SubResource("Gradient_d44ym")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m3qh6"]
-shader = ExtResource("2_3lbil")
+shader = ExtResource("2_qp1bt")
 shader_parameter/energy = 1.6
 shader_parameter/gamma = 1.0
 shader_parameter/scale = Vector3(1, 1, 1)
@@ -345,7 +344,7 @@ _data = {
 
 [node name="Main" type="Node3D"]
 process_priority = 100
-script = ExtResource("1_0uvn2")
+script = ExtResource("1_4qen6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3q0es")
@@ -370,7 +369,6 @@ collision_layer = 16
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("3_sthxs")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Player"]
 visible = false
@@ -379,7 +377,7 @@ skeleton = NodePath("../XROrigin")
 
 [node name="XROrigin" type="XROrigin3D" parent="Player"]
 current = true
-script = ExtResource("4_ok8kd")
+script = ExtResource("4_esqbb")
 
 [node name="HMD" type="XRCamera3D" parent="Player/XROrigin"]
 keep_aspect = 0
@@ -389,7 +387,7 @@ fov = 100.0
 [node name="Left" type="XRController3D" parent="Player/XROrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419881, 0.0485107, 0.00150967)
 tracker = &"left_hand"
-script = ExtResource("5_mqedg")
+script = ExtResource("5_jc2tl")
 
 [node name="GrabberArea" type="Area3D" parent="Player/XROrigin/Left"]
 
@@ -397,10 +395,10 @@ script = ExtResource("5_mqedg")
 transform = Transform3D(0.999987, -0.00359537, -0.00359535, 0.00359537, -4.37114e-08, 0.999994, -0.00359535, -0.999994, 1.2883e-05, -0.000328094, -0.00305989, -0.091265)
 shape = SubResource("CapsuleShape3D_007u5")
 
-[node name="Claw" parent="Player/XROrigin/Left" instance=ExtResource("6_80kxf")]
+[node name="Claw" parent="Player/XROrigin/Left" instance=ExtResource("6_07x5n")]
 transform = Transform3D(0.12, 0, 0, 0, -5.24537e-09, 0.120001, 0, -0.12, -5.24541e-09, -0.356662, 0.0485107, 1.86179)
 top_level = true
-script = ExtResource("7_lrj4f")
+script = ExtResource("7_edfct")
 state = 1.0
 
 [node name="Skeleton3D" parent="Player/XROrigin/Left/Claw/Armature" index="0"]
@@ -425,7 +423,7 @@ font_size = 256
 outline_size = 37
 horizontal_alignment = 0
 line_spacing = -114.2
-script = ExtResource("7_38gp5")
+script = ExtResource("8_e3a06")
 
 [node name="ClawFollow" type="Node3D" parent="Player/XROrigin/Left"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.075)
@@ -433,7 +431,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 [node name="Right" type="XRController3D" parent="Player/XROrigin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0.049, 0.002)
 tracker = &"right_hand"
-script = ExtResource("5_mqedg")
+script = ExtResource("5_jc2tl")
 
 [node name="GrabberArea" type="Area3D" parent="Player/XROrigin/Right"]
 
@@ -441,10 +439,10 @@ script = ExtResource("5_mqedg")
 transform = Transform3D(0.999987, -0.00359537, -0.00359535, 0.00359537, -4.37114e-08, 0.999994, -0.00359535, -0.999994, 1.2883e-05, -0.000328094, -0.00305989, -0.091265)
 shape = SubResource("CapsuleShape3D_007u5")
 
-[node name="Claw" parent="Player/XROrigin/Right" instance=ExtResource("6_80kxf")]
+[node name="Claw" parent="Player/XROrigin/Right" instance=ExtResource("6_07x5n")]
 transform = Transform3D(0.12, 0, 0, 0, -5.24537e-09, 0.12, 0, -0.12, -5.24537e-09, 0.483218, 0.049, 1.86228)
 top_level = true
-script = ExtResource("7_lrj4f")
+script = ExtResource("7_edfct")
 state = 1.0
 
 [node name="Skeleton3D" parent="Player/XROrigin/Right/Claw/Armature" index="0"]
@@ -469,7 +467,7 @@ font_size = 128
 outline_size = 24
 horizontal_alignment = 0
 line_spacing = -53.875
-script = ExtResource("8_m727j")
+script = ExtResource("9_kkqyn")
 
 [node name="ClawFollow" type="Node3D" parent="Player/XROrigin/Right"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.075)
@@ -481,10 +479,11 @@ mesh = SubResource("CylinderMesh_x505e")
 [node name="PlayerCollider" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_cj25u")
-script = ExtResource("6_6e30x")
+script = ExtResource("10_ce85j")
 metadata/climbable = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/PlayerCollider"]
+visible = false
 enabled = false
 target_position = Vector3(0, -0.9, 0)
 debug_shape_custom_color = Color(0, 0.8, 1, 0.133333)
@@ -493,8 +492,8 @@ debug_shape_custom_color = Color(0, 0.8, 1, 0.133333)
 
 [node name="Lava Floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9842, 3.37449)
-script = ExtResource("16_gxjdn")
-lava_tile_scene = ExtResource("16_wd65p")
+script = ExtResource("11_87hpk")
+lava_tile_scene = ExtResource("12_svst8")
 
 [node name="FloorDeathCheck" type="Area3D" parent="Lava Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -505,9 +504,9 @@ collision_mask = 17
 transform = Transform3D(1, -1.94177e-10, 4.65661e-10, 2.83308e-10, 1, 0, 0, 0, 1, 0, -0.8, 0)
 shape = SubResource("WorldBoundaryShape3D_bxx0y")
 
-[node name="LavaTile" parent="Lava Floor" instance=ExtResource("16_wd65p")]
+[node name="LavaTile" parent="Lava Floor" instance=ExtResource("12_svst8")]
 
-[node name="platform" parent="." instance=ExtResource("17_a3swb")]
+[node name="platform" parent="." instance=ExtResource("13_y4u08")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.00574828, -0.801947, 1.59879)
 
 [node name="Cube" parent="platform" index="0"]
@@ -547,7 +546,7 @@ libraries = {
 }
 playback_auto_capture = false
 
-[node name="Platform" parent="." instance=ExtResource("18_54rcf")]
+[node name="Platform" parent="." instance=ExtResource("14_elq8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00029852, 0.989791, -0.0830285)
 
 [connection signal="input_vector2_changed" from="Player/XROrigin/Left" to="Player" method="_left_controller_vector2"]

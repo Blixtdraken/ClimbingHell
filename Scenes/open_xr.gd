@@ -39,7 +39,7 @@ func setup() -> void:
 	else:
 		# We couldn't start OpenXR.
 		print("OpenXR not instantiated!")
-		get_tree().quit()
+		#get_tree().quit()
 		
 func _on_openxr_session_begun() -> void:
 	# Get the reported refresh rate

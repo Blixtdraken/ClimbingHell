@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Climbing Hell"
-run/main_scene="res://main- real .tscn"
+run/main_scene="res://empty test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Texture/icon.svg"
 
@@ -22,6 +22,7 @@ XRSetupHandler="*res://Scenes/xr_setup_handler.tscn"
 
 [debug]
 
+settings/stdout/verbose_stdout=true
 gdscript/warnings/unassigned_variable=0
 gdscript/warnings/unassigned_variable_op_assign=0
 gdscript/warnings/unused_variable=0
@@ -31,11 +32,8 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
-window/vsync/vsync_mode=2
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
+window/size/always_on_top=true
+window/vsync/vsync_mode=0
 
 [file_customization]
 
@@ -59,25 +57,9 @@ jolt_3d/collisions/areas_detect_static_bodies=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-
-[shader_globals]
-
-wind_intensity={
-"type": "float",
-"value": 1.0
-}
-wind_direction={
-"type": "vec3",
-"value": Vector3(1, 0, 0)
-}
-player_position={
-"type": "vec3",
-"value": Vector3(0, 0, 0)
-}
+vrs/mode=2
 
 [xr]
 
 openxr/enabled=true
-openxr/foveation_level=1
-openxr/extensions/hand_tracking=false
 shaders/enabled=true

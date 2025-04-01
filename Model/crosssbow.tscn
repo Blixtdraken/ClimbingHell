@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://c0wq2gh70o4yt"]
 
-[ext_resource type="Script" path="res://Model/crosssbow.gd" id="1_y6u5g"]
+[ext_resource type="Script" uid="uid://4pasihv6whuo" path="res://Model/crosssbow.gd" id="1_y6u5g"]
 
 [sub_resource type="Gradient" id="Gradient_p3taf"]
 offsets = PackedFloat32Array(0, 0.5, 1)
@@ -109,8 +109,8 @@ tracks/0/keys = PackedFloat32Array(0, 1, -2.49462e-17, 0.172355, 8.10151, 0.0333
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l3b3u"]
 _data = {
-"Load": SubResource("Animation_b18q6"),
-"Shoot": SubResource("Animation_00nma")
+&"Load": SubResource("Animation_b18q6"),
+&"Shoot": SubResource("Animation_00nma")
 }
 
 [node name="crosssbow" type="Node3D"]

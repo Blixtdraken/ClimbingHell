@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func _on_body_enter_lava(body:Node3D) -> void:
+	
 	if Engine.is_editor_hint():
 		return
 	print("Lavafied")

@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Climbing Hell"
-run/main_scene="res://empty test.tscn"
+run/main_scene="res://main- real .tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://Texture/icon.svg"
+config/icon="res://render_shader-nodes_textures_voronoi_smoothness-distance-zero.png"
 
 [autoload]
 
@@ -22,7 +22,6 @@ XRSetupHandler="*res://Scenes/xr_setup_handler.tscn"
 
 [debug]
 
-settings/stdout/verbose_stdout=true
 gdscript/warnings/unassigned_variable=0
 gdscript/warnings/unassigned_variable_op_assign=0
 gdscript/warnings/unused_variable=0
@@ -30,10 +29,9 @@ gdscript/warnings/unused_local_constant=0
 gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=0
 
-[display]
+[editor]
 
-window/size/always_on_top=true
-window/vsync/vsync_mode=0
+version_control/vsync/vsync_mode=1
 
 [file_customization]
 
@@ -52,6 +50,10 @@ common/physics_ticks_per_second=90
 3d/physics_engine="JoltPhysics3D"
 jolt_3d/collisions/areas_detect_static_bodies=true
 
+[plugins]
+
+GodotOpenXRMeta=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
@@ -63,3 +65,7 @@ vrs/mode=2
 
 openxr/enabled=true
 shaders/enabled=true
+
+[xr_features]
+
+enable_meta_plugin=true

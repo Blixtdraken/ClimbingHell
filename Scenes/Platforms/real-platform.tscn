@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://fv5so0p2c4fr"]
 
-[ext_resource type="Script" path="res://Scenes/Platforms/climbing_platform.gd" id="1_sgarq"]
-[ext_resource type="Script" path="res://Scenes/Platforms/spawn_platform_settings.gd" id="2_8scxy"]
+[ext_resource type="Script" uid="uid://qyislpy6oqpq" path="res://Scenes/Platforms/climbing_platform.gd" id="1_sgarq"]
+[ext_resource type="Script" uid="uid://8wfcgjfgrhq3" path="res://Scenes/Platforms/spawn_platform_settings.gd" id="2_8scxy"]
 [ext_resource type="Material" uid="uid://dc7vpurh6pdi5" path="res://Scenes/Platforms/real-platform.tres" id="3_e0t8x"]
 [ext_resource type="Resource" uid="uid://cg48j6mb4333g" path="res://Scenes/Platforms/platform_spawn_range.tres" id="3_o6dr3"]
 

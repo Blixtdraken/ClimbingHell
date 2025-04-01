@@ -14,6 +14,10 @@ var xr_origin: XROrigin3D = get_node("XROrigin")
 @onready
 var collider:PlayerCollider = get_node("PlayerCollider")
 
+
+signal climb_start()
+signal climb_stopped()
+
 func _ready() -> void:
 	Globals.player = self
 	

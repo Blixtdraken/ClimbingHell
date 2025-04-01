@@ -1,7 +1,6 @@
-[gd_scene load_steps=68 format=3 uid="uid://cgk5utt07v5a7"]
+[gd_scene load_steps=64 format=3 uid="uid://cgk5utt07v5a7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0uvn2"]
-[ext_resource type="Shader" path="res://sky.gdshader" id="2_3lbil"]
 [ext_resource type="Script" path="res://player_body.gd" id="3_sthxs"]
 [ext_resource type="Script" path="res://xr_origin.gd" id="4_ok8kd"]
 [ext_resource type="Script" path="res://controller.gd" id="5_mqedg"]
@@ -15,38 +14,21 @@
 [ext_resource type="PackedScene" uid="uid://bhmutxrli1suc" path="res://Model/platform.glb" id="17_a3swb"]
 [ext_resource type="PackedScene" uid="uid://fv5so0p2c4fr" path="res://Scenes/Platforms/real-platform.tscn" id="18_54rcf"]
 
-[sub_resource type="Gradient" id="Gradient_hvd2b"]
-offsets = PackedFloat32Array(0.105263, 0.547368, 0.663158, 1)
-colors = PackedColorArray(0.953336, 0.188412, 0, 1, 0.365371, 0, 0.00256053, 1, 0.807485, 0.0586312, 0, 1, 1, 0.572716, 0.495393, 1)
+[sub_resource type="Gradient" id="Gradient_8tu8n"]
+offsets = PackedFloat32Array(0.534247, 0.586758, 0.611872, 0.700913, 0.760274, 0.83105, 0.899543)
+colors = PackedColorArray(0.913725, 0, 0.00784314, 1, 0.705567, 0, 0.0251711, 1, 0.80407, 0.114877, 0.0217456, 1, 0.751516, 0.187907, 0.354449, 1, 0.778769, 0.151425, 0.266736, 1, 0.818418, 0, 0.174685, 1, 0.517841, 0, 0.071656, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_h6e8j"]
-noise_type = 4
-domain_warp_enabled = true
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x73ci"]
+gradient = SubResource("Gradient_8tu8n")
+width = 512
+height = 512
+fill_from = Vector2(1, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_at3yl"]
-color_ramp = SubResource("Gradient_hvd2b")
-noise = SubResource("FastNoiseLite_h6e8j")
-
-[sub_resource type="Gradient" id="Gradient_d44ym"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.40724, 0.502262)
-colors = PackedColorArray(0.737255, 0, 0.0784314, 0.443137, 0.917647, 0, 0.0666667, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_5iyiv"]
-gradient = SubResource("Gradient_d44ym")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3qh6"]
-shader = ExtResource("2_3lbil")
-shader_parameter/energy = 1.6
-shader_parameter/gamma = 1.0
-shader_parameter/scale = Vector3(1, 1, 1)
-shader_parameter/triplanar_blend_power = 4.0
-shader_parameter/seamless_blend = 0.443
-shader_parameter/sky_tex = SubResource("NoiseTexture2D_at3yl")
-shader_parameter/tint_ramp = SubResource("GradientTexture1D_5iyiv")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qd83b"]
+panorama = SubResource("GradientTexture2D_x73ci")
 
 [sub_resource type="Sky" id="Sky_eq7om"]
-sky_material = SubResource("ShaderMaterial_m3qh6")
+sky_material = SubResource("PanoramaSkyMaterial_qd83b")
 
 [sub_resource type="Environment" id="Environment_3q0es"]
 background_mode = 2
@@ -62,10 +44,8 @@ sdfgi_max_distance = 5939.2
 glow_intensity = 0.09
 glow_bloom = 0.69
 fog_mode = 1
-fog_light_color = Color(0.00392157, 0.027451, 0.0980392, 1)
+fog_light_color = Color(0.991886, 0, 0.36783, 1)
 fog_density = 1.0
-fog_sky_affect = 0.898
-fog_height = -14.95
 fog_height_density = 1.4736
 fog_depth_curve = 0.784581
 fog_depth_end = 41.9
@@ -245,7 +225,6 @@ specular_mode = 2
 albedo_texture = SubResource("GradientTexture2D_rpan1")
 
 [sub_resource type="Curve" id="Curve_1gjo1"]
-min_value = -1.0
 _data = [Vector2(0, -1), 0.0, 6.97436, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -253,7 +232,6 @@ point_count = 2
 curve = SubResource("Curve_1gjo1")
 
 [sub_resource type="Curve" id="Curve_j3p2p"]
-max_value = 19.96
 _data = [Vector2(0, 1), 0.0, 1.34319, 0, 0, Vector2(0.995098, 0), -8.13554, 0.0, 0, 0]
 point_count = 2
 
@@ -386,10 +364,11 @@ keep_aspect = 0
 current = true
 fov = 100.0
 
-[node name="Left" type="XRController3D" parent="Player/XROrigin"]
+[node name="Left" type="XRController3D" parent="Player/XROrigin" node_paths=PackedStringArray("other_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419881, 0.0485107, 0.00150967)
 tracker = &"left_hand"
 script = ExtResource("5_mqedg")
+other_controller = NodePath("../Right")
 
 [node name="GrabberArea" type="Area3D" parent="Player/XROrigin/Left"]
 
@@ -430,10 +409,11 @@ script = ExtResource("7_38gp5")
 [node name="ClawFollow" type="Node3D" parent="Player/XROrigin/Left"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.075)
 
-[node name="Right" type="XRController3D" parent="Player/XROrigin"]
+[node name="Right" type="XRController3D" parent="Player/XROrigin" node_paths=PackedStringArray("other_controller")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0.049, 0.002)
 tracker = &"right_hand"
 script = ExtResource("5_mqedg")
+other_controller = NodePath("../Left")
 
 [node name="GrabberArea" type="Area3D" parent="Player/XROrigin/Right"]
 
@@ -484,7 +464,7 @@ shape = SubResource("CapsuleShape3D_cj25u")
 script = ExtResource("6_6e30x")
 metadata/climbable = true
 
-[node name="RayCast3D" type="RayCast3D" parent="Player/PlayerCollider"]
+[node name="FloorRay" type="RayCast3D" parent="Player/PlayerCollider"]
 enabled = false
 target_position = Vector3(0, -0.9, 0)
 debug_shape_custom_color = Color(0, 0.8, 1, 0.133333)

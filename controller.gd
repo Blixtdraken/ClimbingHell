@@ -1,5 +1,6 @@
 extends XRController3D
 
+class_name Controller
 @onready
 var grabber_area: Area3D = get_node("GrabberArea")
 @onready
@@ -8,6 +9,8 @@ var climb_pivot:Variant = null
 @onready
 var player: Player = get_parent().get_parent()
 
+@export
+var other_controller:Controller
 
 
 @onready
@@ -42,6 +45,7 @@ func _physics_process(delta: float) -> void:
 						claw_model.paused = true
 						claw_model.set_transform_from_node3d(claw_model.claw_follow)
 						body._on_climb_grab()
+				
 						break
 		else:
 			player.global_position += climb_pivot-global_position
@@ -53,6 +57,13 @@ func _physics_process(delta: float) -> void:
 
 var is_climbing: bool = false
 
+func release_clamp():
+	is_climbing = false
+	climb_pivot = null
+	claw_model.paused = false
+	pass
+
+var last_trigger_float:float = 0
 func _float_changed(name: String, value: float) -> void:
 	
 	if name == "trigger":
@@ -61,7 +72,7 @@ func _float_changed(name: String, value: float) -> void:
 			is_climbing = false
 			climb_pivot = null
 			claw_model.paused = false
-		else:
+		elif value < last_trigger_float:
 			is_climbing = true
 		
 	elif cross_bow and name == "grip":

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SpawnRange" load_steps=2 format=3 uid="uid://cg48j6mb4333g"]
 
-[ext_resource type="Script" path="res://Scenes/Platforms/spawn_range.gd" id="1_ux65d"]
+[ext_resource type="Script" uid="uid://dkghgllu4ie5r" path="res://Scenes/Platforms/spawn_range.gd" id="1_ux65d"]
 
 [resource]
 script = ExtResource("1_ux65d")

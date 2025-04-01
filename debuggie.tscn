@@ -1,15 +1,15 @@
 [gd_scene load_steps=67 format=3 uid="uid://cx0es1upp8n6"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_4qen6"]
-[ext_resource type="Shader" path="res://sky.gdshader" id="2_qp1bt"]
-[ext_resource type="Script" path="res://xr_origin.gd" id="4_esqbb"]
-[ext_resource type="Script" path="res://controller.gd" id="5_jc2tl"]
+[ext_resource type="Script" uid="uid://x74cjb0bam65" path="res://main.gd" id="1_4qen6"]
+[ext_resource type="Shader" uid="uid://1vjbd587uyjf" path="res://sky.gdshader" id="2_qp1bt"]
+[ext_resource type="Script" uid="uid://bih6yf13crlqt" path="res://xr_origin.gd" id="4_esqbb"]
+[ext_resource type="Script" uid="uid://c2ybccug05mhj" path="res://controller.gd" id="5_jc2tl"]
 [ext_resource type="PackedScene" uid="uid://ctqr55lmhy4yi" path="res://Model/claw.glb" id="6_07x5n"]
-[ext_resource type="Script" path="res://claw.gd" id="7_edfct"]
-[ext_resource type="Script" path="res://score_label.gd" id="8_e3a06"]
-[ext_resource type="Script" path="res://debug_label.gd" id="9_kkqyn"]
-[ext_resource type="Script" path="res://player_collider.gd" id="10_ce85j"]
-[ext_resource type="Script" path="res://lava_floor.gd" id="11_87hpk"]
+[ext_resource type="Script" uid="uid://7i2qht0a2tsh" path="res://claw.gd" id="7_edfct"]
+[ext_resource type="Script" uid="uid://cf2jys01oeosr" path="res://score_label.gd" id="8_e3a06"]
+[ext_resource type="Script" uid="uid://d1leg3ynou8kd" path="res://debug_label.gd" id="9_kkqyn"]
+[ext_resource type="Script" uid="uid://y07xwoemcxit" path="res://player_collider.gd" id="10_ce85j"]
+[ext_resource type="Script" uid="uid://dh7lqsp0y0qex" path="res://lava_floor.gd" id="11_87hpk"]
 [ext_resource type="PackedScene" uid="uid://bg0e16d578la3" path="res://Scenes/Lava/lava_tile.tscn" id="12_svst8"]
 [ext_resource type="PackedScene" uid="uid://bhmutxrli1suc" path="res://Model/platform.glb" id="13_y4u08"]
 [ext_resource type="PackedScene" uid="uid://fv5so0p2c4fr" path="res://Scenes/Platforms/real-platform.tscn" id="14_elq8r"]
@@ -36,13 +36,13 @@ gradient = SubResource("Gradient_d44ym")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m3qh6"]
 shader = ExtResource("2_qp1bt")
+shader_parameter/sky_tex = SubResource("NoiseTexture2D_at3yl")
 shader_parameter/energy = 1.6
 shader_parameter/gamma = 1.0
+shader_parameter/tint_ramp = SubResource("GradientTexture1D_5iyiv")
 shader_parameter/scale = Vector3(1, 1, 1)
 shader_parameter/triplanar_blend_power = 4.0
 shader_parameter/seamless_blend = 0.443
-shader_parameter/sky_tex = SubResource("NoiseTexture2D_at3yl")
-shader_parameter/tint_ramp = SubResource("GradientTexture1D_5iyiv")
 
 [sub_resource type="Sky" id="Sky_eq7om"]
 sky_material = SubResource("ShaderMaterial_m3qh6")
@@ -244,7 +244,7 @@ specular_mode = 2
 albedo_texture = SubResource("GradientTexture2D_rpan1")
 
 [sub_resource type="Curve" id="Curve_1gjo1"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 6.97436, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -252,7 +252,7 @@ point_count = 2
 curve = SubResource("Curve_1gjo1")
 
 [sub_resource type="Curve" id="Curve_j3p2p"]
-max_value = 19.96
+_limits = [0.0, 19.96, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 1.34319, 0, 0, Vector2(0.995098, 0), -8.13554, 0.0, 0, 0]
 point_count = 2
 
@@ -338,8 +338,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8304w"]
 _data = {
-"Idle": SubResource("Animation_5xggo"),
-"RESET": SubResource("Animation_3lsa7")
+&"Idle": SubResource("Animation_5xggo"),
+&"RESET": SubResource("Animation_3lsa7")
 }
 
 [node name="Main" type="Node3D"]

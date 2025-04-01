@@ -4,7 +4,6 @@ var xr_origin:XROrigin3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	return
 	if Globals.score > Globals.high_score:
 		Globals.high_score = Globals.score
 	Globals.score = 0	

@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 func set_climbing_mode(is_climbing_value:bool) -> void:
 	
 	if is_climbing_value:
-		in_air_mode = true
+#		in_air_mode = true
 		collider_shape.height = collider_shape.radius*2
 	else:
 		collider_shape.height = default_capsule_height

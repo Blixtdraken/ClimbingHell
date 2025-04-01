@@ -52,6 +52,7 @@ func _on_openxr_session_begun() -> void:
 	# See if we have a better refresh rate available
 	var new_rate = current_refresh_rate
 	var available_rates : Array = xr_interface.get_available_display_refresh_rates()
+	print(available_rates)
 	if available_rates.size() == 0:
 		print("OpenXR: Target does not support refresh rate extension")
 	elif available_rates.size() == 1:
@@ -61,7 +62,7 @@ func _on_openxr_session_begun() -> void:
 		for rate in available_rates:
 			if rate > new_rate and rate <= maximum_refresh_rate:
 				new_rate = rate
-
+				
 	# Did we find a better rate?
 	if current_refresh_rate != new_rate:
 		print("OpenXR: Setting refresh rate to ", str(new_rate))

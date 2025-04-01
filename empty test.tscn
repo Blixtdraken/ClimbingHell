@@ -16,11 +16,13 @@ albedo_texture = ExtResource("1_t7iql")
 uv1_scale = Vector3(50, 5, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_ueinc"]
-inner_radius = 0.786
+inner_radius = 1.0
+outer_radius = 1.33
 
 [node name="Test" type="Node3D"]
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+current = true
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 

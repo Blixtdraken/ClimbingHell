@@ -41,11 +41,14 @@ func _physics_process(delta: float) -> void:
 			for body in grabber_area.get_overlapping_bodies():
 					if body is ClimbingPlatform or body.has_meta("climbable"):
 						body = body as ClimbingPlatform
+						if not climb_pivot and not other_controller.climb_pivot:
+							player.climb_start.emit()
 						climb_pivot = global_position
 						claw_model.paused = true
 						claw_model.set_transform_from_node3d(claw_model.claw_follow)
 						body._on_climb_grab()
-				
+						other_controller.release_clamp()
+						
 						break
 		else:
 			player.global_position += climb_pivot-global_position
@@ -59,7 +62,6 @@ var is_climbing: bool = false
 
 func release_clamp():
 	is_climbing = false
-	climb_pivot = null
 	claw_model.paused = false
 	pass
 
@@ -69,10 +71,13 @@ func _float_changed(name: String, value: float) -> void:
 	if name == "trigger":
 		claw_model.state = 1.0 - value
 		if value == 0:
+			if climb_pivot and not other_controller.climb_pivot:
+				player.climb_stopped.emit()
 			is_climbing = false
 			climb_pivot = null
 			claw_model.paused = false
-		elif value < last_trigger_float:
+			
+		elif value > last_trigger_float and !climb_pivot:
 			is_climbing = true
 		
 	elif cross_bow and name == "grip":
